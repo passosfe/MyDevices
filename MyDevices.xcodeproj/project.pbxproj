@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		F75C416D2812ACCA00711195 /* MyDevicesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C416C2812ACCA00711195 /* MyDevicesApp.swift */; };
-		F75C416F2812ACCA00711195 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C416E2812ACCA00711195 /* ContentView.swift */; };
+		F75C416F2812ACCA00711195 /* TabContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C416E2812ACCA00711195 /* TabContainerView.swift */; };
 		F75C41712812ACCC00711195 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75C41702812ACCC00711195 /* Assets.xcassets */; };
 		F75C41742812ACCC00711195 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75C41732812ACCC00711195 /* Preview Assets.xcassets */; };
 		F75C417E2812ACCC00711195 /* MyDevicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C417D2812ACCC00711195 /* MyDevicesTests.swift */; };
 		F75C41882812ACCC00711195 /* MyDevicesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41872812ACCC00711195 /* MyDevicesUITests.swift */; };
 		F75C418A2812ACCC00711195 /* MyDevicesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41892812ACCC00711195 /* MyDevicesUITestsLaunchTests.swift */; };
+		F75C41982812B0C000711195 /* TabContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41972812B0C000711195 /* TabContainerViewModel.swift */; };
+		F75C419B2812B5A300711195 /* TabContainerViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C419A2812B5A300711195 /* TabContainerViewConstants.swift */; };
+		F75C419E2812B96D00711195 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C419D2812B96D00711195 /* HomeView.swift */; };
+		F75C41A02812B99C00711195 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C419F2812B99C00711195 /* HomeViewModel.swift */; };
+		F75C41A32812BA1200711195 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41A22812BA1200711195 /* Device.swift */; };
+		F75C41A82812BBEB00711195 /* HomeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41A72812BBEB00711195 /* HomeConstants.swift */; };
+		F75C41B02812CE9200711195 /* DeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41AF2812CE9200711195 /* DeviceViewModel.swift */; };
+		F75C41B22812CEA400711195 /* DeviceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41B12812CEA400711195 /* DeviceDetailView.swift */; };
+		F75C41B62812E54F00711195 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41B52812E54F00711195 /* DeviceService.swift */; };
+		F75C41BB2812F62800711195 /* MockDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41BA2812F62800711195 /* MockDeviceData.swift */; };
+		F75C41BE2813098600711195 /* DeviceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41BD2813098600711195 /* DeviceConstants.swift */; };
+		F75C41C128131AF600711195 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41C028131AF600711195 /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +48,7 @@
 /* Begin PBXFileReference section */
 		F75C41692812ACCA00711195 /* MyDevices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDevices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75C416C2812ACCA00711195 /* MyDevicesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDevicesApp.swift; sourceTree = "<group>"; };
-		F75C416E2812ACCA00711195 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F75C416E2812ACCA00711195 /* TabContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerView.swift; sourceTree = "<group>"; };
 		F75C41702812ACCC00711195 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F75C41732812ACCC00711195 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F75C41792812ACCC00711195 /* MyDevicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDevicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +56,18 @@
 		F75C41832812ACCC00711195 /* MyDevicesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDevicesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75C41872812ACCC00711195 /* MyDevicesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDevicesUITests.swift; sourceTree = "<group>"; };
 		F75C41892812ACCC00711195 /* MyDevicesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDevicesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F75C41972812B0C000711195 /* TabContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerViewModel.swift; sourceTree = "<group>"; };
+		F75C419A2812B5A300711195 /* TabContainerViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerViewConstants.swift; sourceTree = "<group>"; };
+		F75C419D2812B96D00711195 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F75C419F2812B99C00711195 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F75C41A22812BA1200711195 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		F75C41A72812BBEB00711195 /* HomeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConstants.swift; sourceTree = "<group>"; };
+		F75C41AF2812CE9200711195 /* DeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModel.swift; sourceTree = "<group>"; };
+		F75C41B12812CEA400711195 /* DeviceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailView.swift; sourceTree = "<group>"; };
+		F75C41B52812E54F00711195 /* DeviceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
+		F75C41BA2812F62800711195 /* MockDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDeviceData.swift; sourceTree = "<group>"; };
+		F75C41BD2813098600711195 /* DeviceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceConstants.swift; sourceTree = "<group>"; };
+		F75C41C028131AF600711195 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +118,10 @@
 		F75C416B2812ACCA00711195 /* MyDevices */ = {
 			isa = PBXGroup;
 			children = (
+				F75C41BF28131AC900711195 /* Extensions */,
+				F75C41A42812BB6E00711195 /* Services */,
+				F75C41A52812BB9500711195 /* Features */,
 				F75C416C2812ACCA00711195 /* MyDevicesApp.swift */,
-				F75C416E2812ACCA00711195 /* ContentView.swift */,
 				F75C41702812ACCC00711195 /* Assets.xcassets */,
 				F75C41722812ACCC00711195 /* Preview Content */,
 			);
@@ -125,6 +151,104 @@
 				F75C41892812ACCC00711195 /* MyDevicesUITestsLaunchTests.swift */,
 			);
 			path = MyDevicesUITests;
+			sourceTree = "<group>";
+		};
+		F75C41962812AEF100711195 /* TabContainer */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41992812B56000711195 /* Constants */,
+				F75C416E2812ACCA00711195 /* TabContainerView.swift */,
+				F75C41972812B0C000711195 /* TabContainerViewModel.swift */,
+			);
+			path = TabContainer;
+			sourceTree = "<group>";
+		};
+		F75C41992812B56000711195 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F75C419A2812B5A300711195 /* TabContainerViewConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F75C419C2812B95F00711195 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41A62812BBD000711195 /* Constants */,
+				F75C419D2812B96D00711195 /* HomeView.swift */,
+				F75C419F2812B99C00711195 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F75C41A12812B9FA00711195 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41A22812BA1200711195 /* Device.swift */,
+				F75C41BA2812F62800711195 /* MockDeviceData.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		F75C41A42812BB6E00711195 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41B72812E61300711195 /* DeviceService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F75C41A52812BB9500711195 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41AC2812CE7300711195 /* Device */,
+				F75C41962812AEF100711195 /* TabContainer */,
+				F75C419C2812B95F00711195 /* Home */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		F75C41A62812BBD000711195 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41A72812BBEB00711195 /* HomeConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F75C41AC2812CE7300711195 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41BC2813096F00711195 /* Constants */,
+				F75C41AF2812CE9200711195 /* DeviceViewModel.swift */,
+				F75C41B12812CEA400711195 /* DeviceDetailView.swift */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
+		F75C41B72812E61300711195 /* DeviceService */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41A12812B9FA00711195 /* Entities */,
+				F75C41B52812E54F00711195 /* DeviceService.swift */,
+			);
+			path = DeviceService;
+			sourceTree = "<group>";
+		};
+		F75C41BC2813096F00711195 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41BD2813098600711195 /* DeviceConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F75C41BF28131AC900711195 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41C028131AF600711195 /* Color+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +381,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F75C416F2812ACCA00711195 /* ContentView.swift in Sources */,
+				F75C419B2812B5A300711195 /* TabContainerViewConstants.swift in Sources */,
+				F75C41C128131AF600711195 /* Color+Extension.swift in Sources */,
+				F75C41A02812B99C00711195 /* HomeViewModel.swift in Sources */,
+				F75C41982812B0C000711195 /* TabContainerViewModel.swift in Sources */,
+				F75C41BB2812F62800711195 /* MockDeviceData.swift in Sources */,
+				F75C416F2812ACCA00711195 /* TabContainerView.swift in Sources */,
+				F75C41A82812BBEB00711195 /* HomeConstants.swift in Sources */,
+				F75C419E2812B96D00711195 /* HomeView.swift in Sources */,
+				F75C41B22812CEA400711195 /* DeviceDetailView.swift in Sources */,
+				F75C41BE2813098600711195 /* DeviceConstants.swift in Sources */,
+				F75C41A32812BA1200711195 /* Device.swift in Sources */,
 				F75C416D2812ACCA00711195 /* MyDevicesApp.swift in Sources */,
+				F75C41B02812CE9200711195 /* DeviceViewModel.swift in Sources */,
+				F75C41B62812E54F00711195 /* DeviceService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -401,7 +537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -427,6 +563,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,6 +593,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

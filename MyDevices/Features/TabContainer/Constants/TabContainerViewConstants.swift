@@ -15,4 +15,9 @@ public enum TabContainerConstants {
             .init(imageName: "gear", title: "Settings", type: .settings)
         ]
     }
+    
+    enum Strings {
+        static let myDevices = "My Devices"
+        static let settings = "Settings"
+    }
 }

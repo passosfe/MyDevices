@@ -11,6 +11,7 @@ struct TabContainerView: View {
     // MARK: - Typealias
         
     private typealias Tabs = TabContainerConstants.Tabs
+    private typealias Strings = TabContainerConstants.Strings
     
     //MARK: - Properties
     
@@ -35,9 +36,9 @@ struct TabContainerView: View {
             case .home:
                 HomeView(viewModel: HomeViewModel())
             case .myDevices:
-                Text("B")
+                Text(Strings.myDevices)
             case .settings:
-                Text("C")
+                Text(Strings.settings)
             }
         }
 

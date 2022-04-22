@@ -9,12 +9,13 @@ import Foundation
 
 struct Device: Codable, Identifiable {
     let id: String
-    let isFavorite: Bool
+    var isFavorite: Bool
     let imageURL: String
     let brand: String
     let model: String
     let os: String
     let screenResolution: String
+    let stars: Double
     let status: Status
     
     enum Status: String, Codable {

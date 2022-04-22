@@ -8,39 +8,53 @@
 import Foundation
 import Combine
 
-protocol DevicesServiceProtocol {
-    func details(for deviceId: String) -> AnyPublisher<Device, APIError>
-    func search(for term: String) -> AnyPublisher<SearchResponse, APIError>
+protocol DeviceServiceProtocol {
+    func details(for deviceId: String) -> AnyPublisher<Device, Error>
+    func search(for term: String) -> AnyPublisher<[Device], Error>
+    func list() -> AnyPublisher<[Device], Error>
+    func toggleFavorite(deviceId: String) -> AnyPublisher<Void, Error>
 }
 
-final class DevicesService: DevicesServiceProtocol {
-    let agent = Agent()
+final class DeviceService: DeviceServiceProtocol {
+    func details(for deviceId: String) -> AnyPublisher<Device, Error> {
+        if let device = MockDeviceData.devices.first(where: { $0.id == deviceId }) {
+            return Just(device)
+                .setFailureType(to: Error.self)
+                .receive(on: DispatchQueue.main)
+                .delay(for: 2, scheduler: RunLoop.main)
+                .eraseToAnyPublisher()
+        } else {
+            fatalError()
+        }
+    }
     
-    func list(category: MovieAPI.MovieCategories, page: Int) -> AnyPublisher<ListResponse<Movie>, APIError> {
-        return agent.run(MovieAPI.getMovies(category, page).urlRequest)
-            .mapError { _ in APIError.unknown }
-            .map(\.value)
+    func search(for term: String) -> AnyPublisher<[Device], Error> {
+        let devices = MockDeviceData.devices
+            .filter({ "\($0.brand) \($0.model)".contains(term) })
+        return Just(devices)
+            .setFailureType(to: Error.self)
+            .receive(on: DispatchQueue.main)
+            .delay(for: 2, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
     
-    func details(for movieId: Int) -> AnyPublisher<Movie, APIError> {
-        return agent.run(MovieAPI.getDetails(movieId).urlRequest)
-            .mapError { _ in APIError.unknown }
-            .map(\.value)
+    func list() -> AnyPublisher<[Device], Error> {
+        let devices = MockDeviceData.devices
+        return Just(devices)
+            .setFailureType(to: Error.self)
+            .receive(on: DispatchQueue.main)
+            .delay(for: 2, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
     
-    func cast(for movieId: Int) -> AnyPublisher<CastResponse, APIError> {
-        return agent.run(MovieAPI.getCast(movieId).urlRequest)
-            .mapError { _ in APIError.unknown }
-            .map(\.value)
-            .eraseToAnyPublisher()
-    }
-    
-    func search(for term: String, page: Int) -> AnyPublisher<SearchResponse, APIError> {
-        return agent.run(MovieAPI.search(term, page).urlRequest)
-            .mapError { _ in APIError.unknown }
-            .map(\.value)
-            .eraseToAnyPublisher()
+    func toggleFavorite(deviceId: String) -> AnyPublisher<Void, Error> {
+        return Future<Void, Error> { promise in
+            if let index = MockDeviceData.devices.firstIndex(where: { $0.id == deviceId }) {
+                var temp = MockDeviceData.devices[index]
+                temp.isFavorite.toggle()
+                MockDeviceData.devices[index] = temp
+            }
+            promise(.success(()))
+        }.eraseToAnyPublisher()
     }
 }

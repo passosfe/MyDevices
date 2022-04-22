@@ -5,4 +5,8 @@
 //  Created by Felipe Passos on 22/04/22.
 //
 
-import Foundation
+import SwiftUI
+
+extension Color {
+    static let cardBackground = Color("cardBackground")
+}

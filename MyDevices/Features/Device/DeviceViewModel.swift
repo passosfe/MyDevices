@@ -16,14 +16,18 @@ protocol DeviceViewModelProtocol: ObservableObject {
     var os                      : String    { get }
     var screenResolution        : String    { get }
     var isLoading               : Bool      { get }
-    var fullStars               : Int       { get }
-    var halfStars               : Int       { get }
-    var emptyStars              : Int       { get }
+    var starIcons               : [String]  { get }
     
     func toggleFavorite()
 }
 
 final class DeviceViewModel: DeviceViewModelProtocol, Identifiable {
+    // MARK: - Typealias
+
+    private typealias ImageNames = DeviceConstants.ImageNames
+    
+    //MARK: - Properties
+    
     @Published private(set) var device: Device?
     @Published private(set) var isLoading: Bool = false
     
@@ -34,7 +38,8 @@ final class DeviceViewModel: DeviceViewModelProtocol, Identifiable {
     init(deviceId: String, deviceService: DeviceServiceProtocol = DeviceService()) {
         self.deviceService = deviceService
         
-        getMovieDetails(deviceId: deviceId)
+        // Note: Only reason to get the device from the API in this case is to keep the the favourite flag updated, otherwise it could be passed as a property
+        getDeviceDetails(deviceId: deviceId)
     }
     
     var id: String {
@@ -54,7 +59,7 @@ final class DeviceViewModel: DeviceViewModelProtocol, Identifiable {
     }
     
     var favoriteIcon: String {
-        (device?.isFavorite ?? false) ? "star.fill" : "star"
+        (device?.isFavorite ?? false) ? ImageNames.fullStar : ImageNames.emptyStar
     }
     
     var os: String {
@@ -65,30 +70,50 @@ final class DeviceViewModel: DeviceViewModelProtocol, Identifiable {
         device?.screenResolution ?? ""
     }
     
-    var fullStars: Int {
-        Int(device?.stars ?? 0)
-    }
-    
-    var halfStars: Int {
-        Int(ceil(modf(device?.stars ?? 0).1))
-    }
-    
-    var emptyStars: Int {
-        Int(5 - (device?.stars ?? 0))
+    var starIcons : [String] {
+        var stars = [String]()
+        
+        for _ in 0..<fullStars {
+            stars.append(ImageNames.fullStar)
+        }
+        
+        for _ in 0..<halfStars {
+            stars.append(ImageNames.halfStar)
+        }
+        
+        for _ in 0..<emptyStars {
+            stars.append(ImageNames.emptyStar)
+        }
+        
+        return stars
     }
     
     func toggleFavorite() {
         if let deviceId = device?.id {
             self.deviceService.toggleFavorite(deviceId: deviceId)
                 .sink { [unowned self] completition in
-                    self.getMovieDetails(deviceId: deviceId)
+                    self.getDeviceDetails(deviceId: deviceId)
                 } receiveValue: { _ in
                     print ("success")
                 }.store(in: &cancellables)
         }
     }
     
-    private func getMovieDetails(deviceId: String) {
+    // MARK: - Private Properties
+    
+    private var fullStars: Int {
+        Int(modf(device?.stars ?? 0).0)
+    }
+    
+    private var halfStars: Int {
+        Int(ceil(modf(device?.stars ?? 0).1))
+    }
+    
+    private var emptyStars: Int {
+        Int(5 - modf(ceil(device?.stars ?? 0)).0)
+    }
+    
+    private func getDeviceDetails(deviceId: String) {
         isLoading = true
         self.deviceService.details(for: deviceId)
             .sink { [unowned self] completition in

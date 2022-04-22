@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct DeviceDetailView<ViewModel>: View where ViewModel: DeviceViewModelProtocol {
+    
+    // MARK: - Typealias
+        
+    private typealias Colors = DeviceConstants.Colors
+    private typealias Strings = DeviceConstants.Strings
+    private typealias Sizes = DeviceConstants.Sizes
+    
     //MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
@@ -16,48 +23,33 @@ struct DeviceDetailView<ViewModel>: View where ViewModel: DeviceViewModelProtoco
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    AsyncImage(url: viewModel.imageURL) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Color.red
-                    }
-                    .frame(width: 128, height: 128)
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
-                    
                     VStack {
-                        Text("Name: \(viewModel.title)")
-                        
-                        Text("OS: \(viewModel.os)")
-                        
-                        Text("Status: \(viewModel.status)")
-                        
-                        Text("Size: \(viewModel.screenResolution)")
-                        
-                        HStack {
-                            Text("Stars :")
-                            
-                            ForEach(0 ..< viewModel.fullStars) { _ in
-                                Image(systemName: "star.fill")
-                            }
-                            
-                            ForEach(0 ..< viewModel.halfStars) { _ in
-                                Image(systemName: "star.leadinghalf.filled")
-                            }
-                            
-                            ForEach(0 ..< viewModel.emptyStars) { _ in
-                                Image(systemName: "star")
-                            }
+                        AsyncImage(url: viewModel.imageURL) { image in
+                            image.resizable()
+                        } placeholder: {
+                            Colors.cardBackground
                         }
+                        .frame(width: Sizes.imageWidth, height: Sizes.imageHeight)
+                        .clipShape(RoundedRectangle(cornerRadius: Sizes.cornerRadius))
+                        .offset(y: Sizes.imageOffset)
+                        .padding(.top, Sizes.imagePaddingTop)
+                        .padding(.bottom, Sizes.imagePaddingBottom)
+                        
+                        DeviceInformation()
+                        
+                        Spacer()
                     }
+                    .frame(maxWidth: .infinity)
                     .padding()
                     .background(
-                        Color.gray
-                            .cornerRadius(25)
+                        Colors.cardBackground
+                            .cornerRadius(Sizes.cornerRadius)
                     )
-                    .shadow(color: .black.opacity(0.1), radius: 10, x: 5, y: 5)
+                    .shadow(color: Colors.shadow, radius: Sizes.shadowRadius, x: Sizes.shadowX, y: Sizes.shadowY)
                 }
+                .padding([.horizontal, .bottom])
+                .padding(.top, Sizes.topPadding)
                 .redacted(reason: viewModel.isLoading ? .placeholder : [])
-                .frame(maxWidth: .infinity)
             }
             .navigationTitle(viewModel.title)
             .navigationBarItems(trailing:
@@ -68,6 +60,62 @@ struct DeviceDetailView<ViewModel>: View where ViewModel: DeviceViewModelProtoco
                                     }
             )
 
+        }
+    }
+}
+
+extension DeviceDetailView {
+    @ViewBuilder
+    private func DeviceInformation() -> some View {
+        Group {
+            Text(Strings.name)
+                .font(.title3)
+                .bold()
+                .unredacted()
+            Text(viewModel.title)
+                .font(.headline)
+                .foregroundColor(Colors.subtitleForegroundColor)
+                .padding(.bottom)
+            
+            Text(Strings.os)
+                .font(.title3)
+                .bold()
+                .unredacted()
+            Text(viewModel.os)
+                .font(.headline)
+                .foregroundColor(Colors.subtitleForegroundColor)
+                .padding(.bottom)
+            
+            Text(Strings.status)
+                .font(.title3)
+                .bold()
+                .unredacted()
+            Text(viewModel.status)
+                .font(.headline)
+                .foregroundColor(Colors.subtitleForegroundColor)
+                .padding(.bottom)
+            
+            Text(Strings.size)
+                .font(.title3)
+                .bold()
+                .unredacted()
+            Text(viewModel.screenResolution)
+                .font(.headline)
+                .foregroundColor(Colors.subtitleForegroundColor)
+                .padding(.bottom)
+            
+            Text(Strings.stars)
+                .font(.title3)
+                .bold()
+                .unredacted()
+            
+            HStack {
+                ForEach(viewModel.starIcons, id: \.self) { icon in
+                    Image(systemName: icon)
+                        .font(.headline)
+                        .foregroundColor(Colors.subtitleForegroundColor)
+                }
+            }
         }
     }
 }
