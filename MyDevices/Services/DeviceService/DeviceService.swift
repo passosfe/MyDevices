@@ -12,49 +12,41 @@ protocol DeviceServiceProtocol {
     func details(for deviceId: String) -> AnyPublisher<Device, Error>
     func search(for term: String) -> AnyPublisher<[Device], Error>
     func list() -> AnyPublisher<[Device], Error>
-    func toggleFavorite(deviceId: String) -> AnyPublisher<Void, Error>
+    func toggleFavorite(deviceId: String) -> AnyPublisher<String, Error>
 }
 
 final class DeviceService: DeviceServiceProtocol {
+    let agent = MockAgent()
+    
     func details(for deviceId: String) -> AnyPublisher<Device, Error> {
-        if let device = MockDeviceData.devices.first(where: { $0.id == deviceId }) {
-            return Just(device)
-                .setFailureType(to: Error.self)
-                .receive(on: DispatchQueue.main)
-                .delay(for: 2, scheduler: RunLoop.main)
-                .eraseToAnyPublisher()
-        } else {
-            fatalError()
-        }
+        return agent.run(DevicesAPI.getDetails(deviceId).urlRequest)
+            .map(\.value)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
     
     func search(for term: String) -> AnyPublisher<[Device], Error> {
-        let devices = MockDeviceData.devices
-            .filter({ "\($0.brand) \($0.model)".contains(term) })
-        return Just(devices)
-            .setFailureType(to: Error.self)
+        return agent.run(DevicesAPI.search(term).urlRequest)
+            .map(\.value)
             .receive(on: DispatchQueue.main)
-            .delay(for: 2, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
     
     func list() -> AnyPublisher<[Device], Error> {
-        let devices = MockDeviceData.devices
-        return Just(devices)
-            .setFailureType(to: Error.self)
+        return agent.run(DevicesAPI.getDevices.urlRequest)
+            .map(\.value)
             .receive(on: DispatchQueue.main)
-            .delay(for: 2, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
     
-    func toggleFavorite(deviceId: String) -> AnyPublisher<Void, Error> {
-        return Future<Void, Error> { promise in
-            if let index = MockDeviceData.devices.firstIndex(where: { $0.id == deviceId }) {
-                var temp = MockDeviceData.devices[index]
-                temp.isFavorite.toggle()
-                MockDeviceData.devices[index] = temp
-            }
-            promise(.success(()))
-        }.eraseToAnyPublisher()
+    func toggleFavorite(deviceId: String) -> AnyPublisher<String, Error> {
+        return agent.run(DevicesAPI.toggleFavourite(deviceId).urlRequest)
+            .map(\.value)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+//        return Future<Void, Error> { promise in
+//
+//            promise(.success(()))
+//        }.eraseToAnyPublisher()
     }
 }

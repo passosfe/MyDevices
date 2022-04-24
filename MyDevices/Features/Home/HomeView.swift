@@ -30,6 +30,7 @@ struct HomeView<ViewModel>: View where ViewModel: HomeViewModelProtocol {
                         Text(viewModel.searchResultsAmmount)
                             .font(.title3)
                             .bold()
+                            .accessibilityLabel(Strings.resultsAmmountAccessibility)
                     } else if viewModel.isLoading {
                         ProgressView()
                     }
@@ -59,7 +60,7 @@ extension HomeView {
     private func DeviceItemView(for device: Device) -> some View {
         HStack {
             Image(systemName: ImageNames.phone)
-                .font(.headline)
+                .font(.title)
                 .foregroundColor(Colors.subtitleColor)
             
             Spacer()

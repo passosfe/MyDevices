@@ -16,6 +16,7 @@ protocol DeviceViewModelProtocol: ObservableObject {
     var os                      : String    { get }
     var screenResolution        : String    { get }
     var isLoading               : Bool      { get }
+    var isLoadingFavourite      : Bool      { get }
     var starIcons               : [String]  { get }
     
     func toggleFavorite()
@@ -30,6 +31,7 @@ final class DeviceViewModel: DeviceViewModelProtocol, Identifiable {
     
     @Published private(set) var device: Device?
     @Published private(set) var isLoading: Bool = false
+    @Published private(set) var isLoadingFavourite: Bool = false
     
     private let deviceService: DeviceServiceProtocol
     
@@ -89,13 +91,18 @@ final class DeviceViewModel: DeviceViewModelProtocol, Identifiable {
     }
     
     func toggleFavorite() {
+        self.isLoadingFavourite = true
         if let deviceId = device?.id {
             self.deviceService.toggleFavorite(deviceId: deviceId)
-                .sink { [unowned self] completition in
-                    self.getDeviceDetails(deviceId: deviceId)
-                } receiveValue: { _ in
-                    print ("success")
-                }.store(in: &cancellables)
+            .sink { [unowned self] completition in
+                self.deviceService.details(for: deviceId)
+                    .sink { [unowned self] completition in
+                        self.isLoadingFavourite = false
+                    } receiveValue: { device in
+                        self.device = device
+                    }.store(in: &cancellables)
+                
+            } receiveValue: { _ in }.store(in: &cancellables)
         }
     }
     

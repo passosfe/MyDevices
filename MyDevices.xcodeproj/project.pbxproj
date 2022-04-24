@@ -11,9 +11,6 @@
 		F75C416F2812ACCA00711195 /* TabContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C416E2812ACCA00711195 /* TabContainerView.swift */; };
 		F75C41712812ACCC00711195 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75C41702812ACCC00711195 /* Assets.xcassets */; };
 		F75C41742812ACCC00711195 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75C41732812ACCC00711195 /* Preview Assets.xcassets */; };
-		F75C417E2812ACCC00711195 /* MyDevicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C417D2812ACCC00711195 /* MyDevicesTests.swift */; };
-		F75C41882812ACCC00711195 /* MyDevicesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41872812ACCC00711195 /* MyDevicesUITests.swift */; };
-		F75C418A2812ACCC00711195 /* MyDevicesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41892812ACCC00711195 /* MyDevicesUITestsLaunchTests.swift */; };
 		F75C41982812B0C000711195 /* TabContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41972812B0C000711195 /* TabContainerViewModel.swift */; };
 		F75C419B2812B5A300711195 /* TabContainerViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C419A2812B5A300711195 /* TabContainerViewConstants.swift */; };
 		F75C419E2812B96D00711195 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C419D2812B96D00711195 /* HomeView.swift */; };
@@ -26,6 +23,14 @@
 		F75C41BB2812F62800711195 /* MockDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41BA2812F62800711195 /* MockDeviceData.swift */; };
 		F75C41BE2813098600711195 /* DeviceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41BD2813098600711195 /* DeviceConstants.swift */; };
 		F75C41C128131AF600711195 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41C028131AF600711195 /* Color+Extension.swift */; };
+		F75C41C428141CF000711195 /* DeviceServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41C328141CF000711195 /* DeviceServiceMock.swift */; };
+		F75C41C628141E8900711195 /* HomeViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41C528141E8900711195 /* HomeViewModel_Tests.swift */; };
+		F75C41CA28142FFC00711195 /* DeviceViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C41C928142FFC00711195 /* DeviceViewModel_Tests.swift */; };
+		F792E7CA281437A6006BDADD /* HomeView_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792E7C9281437A6006BDADD /* HomeView_UITests.swift */; };
+		F792E7CF28158986006BDADD /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792E7CE28158986006BDADD /* APIProvider.swift */; };
+		F792E7D1281589F7006BDADD /* MockAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792E7D0281589F7006BDADD /* MockAPIProvider.swift */; };
+		F792E7D328158A3D006BDADD /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792E7D228158A3D006BDADD /* Agent.swift */; };
+		F792E7D528158BD6006BDADD /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792E7D428158BD6006BDADD /* Endpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +57,7 @@
 		F75C41702812ACCC00711195 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F75C41732812ACCC00711195 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F75C41792812ACCC00711195 /* MyDevicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDevicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F75C417D2812ACCC00711195 /* MyDevicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDevicesTests.swift; sourceTree = "<group>"; };
 		F75C41832812ACCC00711195 /* MyDevicesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDevicesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F75C41872812ACCC00711195 /* MyDevicesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDevicesUITests.swift; sourceTree = "<group>"; };
-		F75C41892812ACCC00711195 /* MyDevicesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDevicesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F75C41972812B0C000711195 /* TabContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerViewModel.swift; sourceTree = "<group>"; };
 		F75C419A2812B5A300711195 /* TabContainerViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerViewConstants.swift; sourceTree = "<group>"; };
 		F75C419D2812B96D00711195 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 		F75C41BA2812F62800711195 /* MockDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDeviceData.swift; sourceTree = "<group>"; };
 		F75C41BD2813098600711195 /* DeviceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceConstants.swift; sourceTree = "<group>"; };
 		F75C41C028131AF600711195 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		F75C41C328141CF000711195 /* DeviceServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceServiceMock.swift; sourceTree = "<group>"; };
+		F75C41C528141E8900711195 /* HomeViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel_Tests.swift; sourceTree = "<group>"; };
+		F75C41C928142FFC00711195 /* DeviceViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModel_Tests.swift; sourceTree = "<group>"; };
+		F792E7C9281437A6006BDADD /* HomeView_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView_UITests.swift; sourceTree = "<group>"; };
+		F792E7CE28158986006BDADD /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
+		F792E7D0281589F7006BDADD /* MockAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIProvider.swift; sourceTree = "<group>"; };
+		F792E7D228158A3D006BDADD /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		F792E7D428158BD6006BDADD /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +149,9 @@
 		F75C417C2812ACCC00711195 /* MyDevicesTests */ = {
 			isa = PBXGroup;
 			children = (
-				F75C417D2812ACCC00711195 /* MyDevicesTests.swift */,
+				F75C41C228141CD800711195 /* Utils */,
+				F75C41C528141E8900711195 /* HomeViewModel_Tests.swift */,
+				F75C41C928142FFC00711195 /* DeviceViewModel_Tests.swift */,
 			);
 			path = MyDevicesTests;
 			sourceTree = "<group>";
@@ -147,8 +159,7 @@
 		F75C41862812ACCC00711195 /* MyDevicesUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F75C41872812ACCC00711195 /* MyDevicesUITests.swift */,
-				F75C41892812ACCC00711195 /* MyDevicesUITestsLaunchTests.swift */,
+				F792E7C9281437A6006BDADD /* HomeView_UITests.swift */,
 			);
 			path = MyDevicesUITests;
 			sourceTree = "<group>";
@@ -193,7 +204,10 @@
 		F75C41A42812BB6E00711195 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F792E7CD28158975006BDADD /* Provider */,
 				F75C41B72812E61300711195 /* DeviceService */,
+				F792E7D228158A3D006BDADD /* Agent.swift */,
+				F792E7D428158BD6006BDADD /* Endpoints.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -249,6 +263,23 @@
 				F75C41C028131AF600711195 /* Color+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F75C41C228141CD800711195 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F75C41C328141CF000711195 /* DeviceServiceMock.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F792E7CD28158975006BDADD /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				F792E7CE28158986006BDADD /* APIProvider.swift */,
+				F792E7D0281589F7006BDADD /* MockAPIProvider.swift */,
+			);
+			path = Provider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,8 +412,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F792E7D328158A3D006BDADD /* Agent.swift in Sources */,
 				F75C419B2812B5A300711195 /* TabContainerViewConstants.swift in Sources */,
 				F75C41C128131AF600711195 /* Color+Extension.swift in Sources */,
+				F792E7CF28158986006BDADD /* APIProvider.swift in Sources */,
 				F75C41A02812B99C00711195 /* HomeViewModel.swift in Sources */,
 				F75C41982812B0C000711195 /* TabContainerViewModel.swift in Sources */,
 				F75C41BB2812F62800711195 /* MockDeviceData.swift in Sources */,
@@ -395,6 +428,8 @@
 				F75C416D2812ACCA00711195 /* MyDevicesApp.swift in Sources */,
 				F75C41B02812CE9200711195 /* DeviceViewModel.swift in Sources */,
 				F75C41B62812E54F00711195 /* DeviceService.swift in Sources */,
+				F792E7D528158BD6006BDADD /* Endpoints.swift in Sources */,
+				F792E7D1281589F7006BDADD /* MockAPIProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +437,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F75C417E2812ACCC00711195 /* MyDevicesTests.swift in Sources */,
+				F75C41C628141E8900711195 /* HomeViewModel_Tests.swift in Sources */,
+				F75C41C428141CF000711195 /* DeviceServiceMock.swift in Sources */,
+				F75C41CA28142FFC00711195 /* DeviceViewModel_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,8 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F75C418A2812ACCC00711195 /* MyDevicesUITestsLaunchTests.swift in Sources */,
-				F75C41882812ACCC00711195 /* MyDevicesUITests.swift in Sources */,
+				F792E7CA281437A6006BDADD /* HomeView_UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

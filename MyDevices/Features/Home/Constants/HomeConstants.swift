@@ -19,6 +19,8 @@ public enum HomeConstants {
         static let title = "Home"
         static let resultsAmmountPlaceholder = "{resultsPlaceholder}"
         static let resultsAmmount = "There are \(resultsAmmountPlaceholder) results for your query"
+        
+        static let resultsAmmountAccessibility = "searchResultsAmmount"
     }
     
     enum Sizes {

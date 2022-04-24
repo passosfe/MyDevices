@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "22378782-60A6-47E0-9EA7-9F11ADE6FC4E"
+            uuid = "17B8FD9F-3A57-4947-9178-F127656C3D44"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyDevices/Flow/Device/DeviceViewModel.swift"
+            filePath = "MyDevices/Features/Device/DeviceViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "getMovieDetails(deviceId:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "toggleFavorite()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

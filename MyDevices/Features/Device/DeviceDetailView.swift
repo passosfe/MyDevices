@@ -25,11 +25,13 @@ struct DeviceDetailView<ViewModel>: View where ViewModel: DeviceViewModelProtoco
                 VStack {
                     VStack {
                         AsyncImage(url: viewModel.imageURL) { image in
-                            image.resizable()
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
                         } placeholder: {
                             Colors.cardBackground
                         }
-                        .frame(width: Sizes.imageWidth, height: Sizes.imageHeight)
+                        .frame(height: Sizes.imageHeight)
                         .clipShape(RoundedRectangle(cornerRadius: Sizes.cornerRadius))
                         .offset(y: Sizes.imageOffset)
                         .padding(.top, Sizes.imagePaddingTop)
@@ -52,14 +54,29 @@ struct DeviceDetailView<ViewModel>: View where ViewModel: DeviceViewModelProtoco
                 .redacted(reason: viewModel.isLoading ? .placeholder : [])
             }
             .navigationTitle(viewModel.title)
-            .navigationBarItems(trailing:
-                                    Image(systemName: viewModel.favoriteIcon)
-                                    .padding()
-                                    .onTapGesture {
-                                        viewModel.toggleFavorite()
-                                    }
-            )
+            .navigationBarItems(trailing: FavouriteButton())
 
+        }
+    }
+}
+
+extension DeviceDetailView {
+    @ViewBuilder
+    private func FavouriteButton() -> some View {
+        ZStack {
+            Image(systemName: viewModel.favoriteIcon)
+            .padding()
+            .onTapGesture {
+                if !viewModel.isLoadingFavourite {
+                    viewModel.toggleFavorite()
+                }
+            }
+            .opacity(viewModel.isLoadingFavourite ? 0.1 : 1)
+            .accessibilityLabel(Strings.favouriteIconAccessibility)
+
+            if viewModel.isLoadingFavourite {
+                ProgressView()
+            }
         }
     }
 }
@@ -68,46 +85,19 @@ extension DeviceDetailView {
     @ViewBuilder
     private func DeviceInformation() -> some View {
         Group {
-            Text(Strings.name)
-                .font(.title3)
-                .bold()
-                .unredacted()
-            Text(viewModel.title)
-                .font(.headline)
-                .foregroundColor(Colors.subtitleForegroundColor)
-                .padding(.bottom)
+            SectionTitle(Strings.name)
+            SectionSubtitle(viewModel.title)
             
-            Text(Strings.os)
-                .font(.title3)
-                .bold()
-                .unredacted()
-            Text(viewModel.os)
-                .font(.headline)
-                .foregroundColor(Colors.subtitleForegroundColor)
-                .padding(.bottom)
+            SectionTitle(Strings.os)
+            SectionSubtitle(viewModel.os)
             
-            Text(Strings.status)
-                .font(.title3)
-                .bold()
-                .unredacted()
-            Text(viewModel.status)
-                .font(.headline)
-                .foregroundColor(Colors.subtitleForegroundColor)
-                .padding(.bottom)
+            SectionTitle(Strings.status)
+            SectionSubtitle(viewModel.status)
             
-            Text(Strings.size)
-                .font(.title3)
-                .bold()
-                .unredacted()
-            Text(viewModel.screenResolution)
-                .font(.headline)
-                .foregroundColor(Colors.subtitleForegroundColor)
-                .padding(.bottom)
+            SectionTitle(Strings.size)
+            SectionSubtitle(viewModel.screenResolution)
             
-            Text(Strings.stars)
-                .font(.title3)
-                .bold()
-                .unredacted()
+            SectionTitle(Strings.stars)
             
             HStack {
                 ForEach(viewModel.starIcons, id: \.self) { icon in
@@ -117,6 +107,22 @@ extension DeviceDetailView {
                 }
             }
         }
+    }
+    
+    @ViewBuilder
+    private func SectionTitle(_ text: String) -> some View {
+        Text(text)
+            .font(.title3)
+            .bold()
+            .unredacted()
+    }
+    
+    @ViewBuilder
+    private func SectionSubtitle(_ text: String) -> some View {
+        Text(text)
+            .font(.headline)
+            .foregroundColor(Colors.subtitleForegroundColor)
+            .padding(.bottom)
     }
 }
 

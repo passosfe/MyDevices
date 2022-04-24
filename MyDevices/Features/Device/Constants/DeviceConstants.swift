@@ -21,10 +21,11 @@ public enum DeviceConstants {
         static let status = "Status"
         static let size = "Size"
         static let stars = "Stars"
+        
+        static let favouriteIconAccessibility = "FavouriteIcon"
     }
     
     enum Sizes {
-        static let imageWidth: CGFloat = 180
         static let imageHeight: CGFloat = 250
         static let imageOffset: CGFloat = -180
         static let imagePaddingTop: CGFloat = 40

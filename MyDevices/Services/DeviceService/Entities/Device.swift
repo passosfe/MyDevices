@@ -20,6 +20,6 @@ struct Device: Codable, Identifiable {
     
     enum Status: String, Codable {
         case available
-        case unavailabe
+        case unavailable
     }
 }
