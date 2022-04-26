@@ -17,7 +17,7 @@ final class DeviceServiceMock: DeviceServiceProtocol {
         if let device = devices.first(where: { $0.id == deviceId }) {
             return Just(device)
                 .setFailureType(to: Error.self)
-                .receive(on: DispatchQueue.main)
+                .receive(on: DispatchQueue.global())
                 .delay(for: 0.5, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         } else {
@@ -30,7 +30,7 @@ final class DeviceServiceMock: DeviceServiceProtocol {
             .filter({ "\($0.brand) \($0.model)".lowercased().contains(term.lowercased()) })
         return Just(devices)
             .setFailureType(to: Error.self)
-            .receive(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.global())
             .delay(for: 0.5, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
@@ -39,7 +39,7 @@ final class DeviceServiceMock: DeviceServiceProtocol {
         let devices = devices
         return Just(devices)
             .setFailureType(to: Error.self)
-            .receive(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.global())
             .delay(for: 0.5, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
@@ -53,7 +53,7 @@ final class DeviceServiceMock: DeviceServiceProtocol {
         
         return Just("")
             .setFailureType(to: Error.self)
-            .receive(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.global())
             .delay(for: 0.5, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }

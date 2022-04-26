@@ -21,28 +21,28 @@ final class DeviceService: DeviceServiceProtocol {
     func details(for deviceId: String) -> AnyPublisher<Device, Error> {
         return agent.run(DevicesAPI.getDetails(deviceId).urlRequest)
             .map(\.value)
-            .receive(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.global())
             .eraseToAnyPublisher()
     }
     
     func search(for term: String) -> AnyPublisher<[Device], Error> {
         return agent.run(DevicesAPI.search(term).urlRequest)
             .map(\.value)
-            .receive(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.global())
             .eraseToAnyPublisher()
     }
     
     func list() -> AnyPublisher<[Device], Error> {
         return agent.run(DevicesAPI.getDevices.urlRequest)
             .map(\.value)
-            .receive(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.global())
             .eraseToAnyPublisher()
     }
     
     func toggleFavorite(deviceId: String) -> AnyPublisher<String, Error> {
         return agent.run(DevicesAPI.toggleFavourite(deviceId).urlRequest)
             .map(\.value)
-            .receive(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.global())
             .eraseToAnyPublisher()
 //        return Future<Void, Error> { promise in
 //
